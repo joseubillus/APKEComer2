@@ -35,12 +35,13 @@ public class GalleryFragment extends Fragment {
         GridProd = (GridView)root.findViewById(R.id.FrmProd_GridProd);
         try {
             dpro=new DProducto(root.getContext());
+            dpro.GridList = GridProd;
             dpro.getList("");
         } catch (Exception e)
         {getToast(root.getContext(),"Error Exp"+e.getMessage());}
         return root;
     }
-    
+
     public void getToast(Context ct,String men){
         Toast.makeText(ct,men,Toast.LENGTH_LONG).show();
     }

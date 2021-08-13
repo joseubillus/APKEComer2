@@ -1,6 +1,7 @@
 package com.example.controlador;
 
 import android.content.Context;
+import android.widget.ArrayAdapter;
 import android.widget.GridView;
 import android.widget.Toast;
 
@@ -8,6 +9,9 @@ import com.example.modelo.Producto;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
+
+import org.json.JSONArray;
+import org.json.JSONException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,7 +22,7 @@ public class DProducto implements IDao<Producto> {
     private String url=Conexion.geturl("SProducto.php");
     private AsyncHttpClient asyn=new AsyncHttpClient();
     private static List<Producto> array=new ArrayList<>();
-    private GridView GridList;
+    public GridView GridList;
     private Context ct;
 
     public DProducto(Context c){
@@ -34,7 +38,14 @@ public class DProducto implements IDao<Producto> {
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
                 String resp=new String(responseBody);
-                getToast(resp);
+                try {
+                    getJSON(resp);
+                    ArrayAdapter adp=new ArrayAdapter
+                            (ct, android.R.layout.simple_dropdown_item_1line);
+                    for (Producto v:array) adp.add(v.getCod() +" " + v.getNom());
+                    GridList.setAdapter(adp);
+                } catch (JSONException e)
+                {getToast("Error JSON:"+e.getMessage()); }
             }
             @Override
             public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
@@ -42,6 +53,24 @@ public class DProducto implements IDao<Producto> {
             }
         });
     }
+
+    public void getJSON(String valor)throws JSONException {
+        JSONArray json=new JSONArray(valor);
+        for (int i = 0; i < json.length(); i++) {
+            Producto pro=new Producto();
+            pro.setCod(new Integer(json.getJSONObject(i).getString("cod")));
+            pro.setNom(json.getJSONObject(i).getString("nom"));
+            pro.setPre(new Double(json.getJSONObject(i).getString("pre")));
+            pro.setStock(new Integer(json.getJSONObject(i).getString("stock")));
+            pro.setMar(json.getJSONObject(i).getString("mar"));
+            pro.setCat(json.getJSONObject(i).getString("cat"));
+            pro.setRank(new Integer(json.getJSONObject(i).getString("rank")));
+            pro.setCarac(json.getJSONObject(i).getString("carac"));
+            pro.setCarac(json.getJSONObject(i).getString("img"));
+            array.add(pro);
+        }
+    }
+
     private void getToast(String men){
         Toast.makeText(ct,men,Toast.LENGTH_LONG).show();
     }
