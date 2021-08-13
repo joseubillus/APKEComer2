@@ -1,12 +1,18 @@
 package com.example.controlador;
 
 import android.content.Context;
+import android.content.Intent;
 import android.widget.Toast;
 
+import com.example.apkecomer.MnMenu;
 import com.example.modelo.Login;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,7 +20,7 @@ import java.util.List;
 import cz.msebera.android.httpclient.Header;
 
 public class DLogin implements IDao<Login> {
-    private String url="http://192.168.0.11:8070/PHPEComer/Servicio/SLogin.php";
+    private String url=Conexion.geturl("SLogin.php");
     private static List<Login> array=new ArrayList<>();
     private AsyncHttpClient asyn=new AsyncHttpClient();
     private Context ct;
@@ -32,7 +38,13 @@ public class DLogin implements IDao<Login> {
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
                 String resp=new String(responseBody);
-                getToast(resp);
+                try {
+                    JSONObject json=new JSONObject(resp);
+                    String r=json.get("Success").toString();
+                    if(r.equals("Carrito.php"))
+                        ct.startActivity(new Intent(ct, MnMenu.class));
+                } catch (JSONException e)
+                {getToast("Error Validación:"+resp+" "+e.getMessage());}
             }
             @Override
             public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
