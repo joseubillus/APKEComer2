@@ -6,6 +6,7 @@ import android.widget.GridView;
 import android.widget.Toast;
 
 import com.example.modelo.Producto;
+import com.example.util.AdapterProducto;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
@@ -22,6 +23,7 @@ public class DProducto implements IDao<Producto> {
     private String url=Conexion.geturl("SProducto.php");
     private AsyncHttpClient asyn=new AsyncHttpClient();
     private static List<Producto> array=new ArrayList<>();
+    private AdapterProducto adp;
     public GridView GridList;
     private Context ct;
 
@@ -39,10 +41,9 @@ public class DProducto implements IDao<Producto> {
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
                 String resp=new String(responseBody);
                 try {
+                    array.clear();
                     getJSON(resp);
-                    ArrayAdapter adp=new ArrayAdapter
-                            (ct, android.R.layout.simple_dropdown_item_1line);
-                    for (Producto v:array) adp.add(v.getCod() +" " + v.getNom());
+                    adp=new AdapterProducto(ct,array);
                     GridList.setAdapter(adp);
                 } catch (JSONException e)
                 {getToast("Error JSON:"+e.getMessage()); }

@@ -16,5 +16,7 @@
         android:id="@+id/FrmProd_GridProd"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/FrmProd_SchBus" />
+        android:layout_below="@id/FrmProd_SchBus"
+        android:numColumns="2"
+        tools:listitem="@layout/conf_fram_gallery" />
 </RelativeLayout>
