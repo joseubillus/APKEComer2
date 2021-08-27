@@ -67,7 +67,7 @@ public class DProducto implements IDao<Producto> {
             pro.setCat(json.getJSONObject(i).getString("cat"));
             pro.setRank(new Integer(json.getJSONObject(i).getString("rank")));
             pro.setCarac(json.getJSONObject(i).getString("carac"));
-            pro.setCarac(json.getJSONObject(i).getString("img"));
+            pro.setImg(json.getJSONObject(i).getString("img"));
             array.add(pro);
         }
     }

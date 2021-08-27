@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.GridView;
+import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -24,6 +25,7 @@ public class GalleryFragment extends Fragment {
 
     private FragmentGalleryBinding binding;
     private GridView GridProd;
+    private SearchView schbus;
     private DProducto dpro;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -33,13 +35,31 @@ public class GalleryFragment extends Fragment {
         View root = binding.getRoot();
 
         GridProd = (GridView)root.findViewById(R.id.FrmProd_GridProd);
+        schbus = (SearchView)root.findViewById(R.id.FrmProd_SchBus);
+        schbus.setOnQueryTextListener(getSearchBuscar(root));
+        getList(root,"");
+        return root;
+    }
+
+    public SearchView.OnQueryTextListener getSearchBuscar(View root){
+        return new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {return false;}
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                getList(root,newText);
+                return false;
+            }
+        };
+    }
+
+    public void getList(View root, String bus){
         try {
             dpro=new DProducto(root.getContext());
             dpro.GridList = GridProd;
-            dpro.getList("");
+            dpro.getList(bus);
         } catch (Exception e)
         {getToast(root.getContext(),"Error Exp"+e.getMessage());}
-        return root;
     }
 
     public void getToast(Context ct,String men){

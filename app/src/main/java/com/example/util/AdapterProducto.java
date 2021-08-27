@@ -9,8 +9,11 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.example.apkecomer.R;
+import com.example.controlador.Conexion;
 import com.example.modelo.Producto;
 
 import java.util.ArrayList;
@@ -60,6 +63,11 @@ public class AdapterProducto extends BaseAdapter {
         Producto prod=getItem(position);
         lblnom.setText(""+prod.getNom());
         lblpre.setText("S/."+prod.getPre());
+
+        Glide.with(ct)
+                .load(Conexion.getImg(prod.getImg()))
+                .error(R.drawable.error404)
+                .into(img);
         return root;
     }
 }
