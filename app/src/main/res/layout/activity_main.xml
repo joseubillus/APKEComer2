@@ -4,27 +4,32 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#153CB3"
+    android:background="@drawable/shape_login_fondo"
     tools:context=".MainActivity">
 
+    <ImageView
+        android:id="@+id/FrmPre_ImgPre"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:layout_centerInParent="true"
+        app:srcCompat="@drawable/a_logo" />
+
+    <ProgressBar
+        android:id="@+id/FrmPre_ProgBar"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_below="@id/FrmPre_ImgPre"
+        android:layout_centerInParent="true" />
+
     <TextView
-        android:id="@+id/FrmPre_Lbltitu"
-        android:layout_width="match_parent"
+        android:id="@+id/FrmPre_Lblpor"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="false"
-        android:layout_centerVertical="true"
-        android:gravity="center"
-        android:text="Bienvenido a mi Sistema"
-        android:textColor="#FBFBFB"
-        android:textSize="24sp"
-        android:textStyle="bold" />
-
-    <Button
-        android:id="@+id/FrmPre_btnacep"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/FrmPre_Lbltitu"
-        android:text="Aceptar"
-        app:backgroundTint="#E91E63" />
-
+        android:layout_below="@id/FrmPre_ImgPre"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="25dp"
+        android:text="100%"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp" />
 </RelativeLayout>

@@ -55,6 +55,7 @@ public class DLogin implements IDao<Login> {
                 {new Mensaje(ct).FMensajeDialog("Error", "Error Validación:"+resp+" "+e.getMessage(),0).show();}
                 ms.MCloseProgBar(true);
             }
+
             @Override
             public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
                 ms.MCloseProgBar(true);
