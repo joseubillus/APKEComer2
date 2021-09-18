@@ -22,4 +22,12 @@
     <style name="Theme.APKEComer.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="Theme.APKEComer.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="AppFullScreen" parent="@android:style/Theme.Light.NoTitleBar.Fullscreen">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/purple_500</item>
+        <item name="colorPrimaryVariant">@color/purple_700</item>
+        <item name="colorOnPrimary">@color/white</item>
+    </style>
+
 </resources>

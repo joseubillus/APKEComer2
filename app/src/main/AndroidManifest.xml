@@ -41,7 +41,9 @@
             android:label="@string/title_activity_mn_menu"
             android:theme="@style/Theme.APKEComer.NoActionBar" />
         <activity android:name=".MnLogin" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainActivity"
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar.Fullscreen"
+            >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
