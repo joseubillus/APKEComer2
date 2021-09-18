@@ -58,7 +58,7 @@ public class AdapterProducto extends BaseAdapter {
         ImageView img=(ImageView)root.findViewById(R.id.FrmCFProd_Img);
         TextView lblnom=(TextView)root.findViewById(R.id.FrmCFProd_Lblnom);
         TextView lblpre=(TextView)root.findViewById(R.id.FrmCFProd_Lblpre);
-        RatingBar rank=(RatingBar) root.findViewById(R.id.FrmCFProd_Rank);
+        //RatingBar rank=(RatingBar) root.findViewById(R.id.FrmCFProd_Rank);
 
         Producto prod=getItem(position);
         lblnom.setText(""+prod.getNom());

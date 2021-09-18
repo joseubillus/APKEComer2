@@ -31,7 +31,7 @@ public class MainActivity extends Activity {
 
     }
 
-    private void showSystemUI() {
+    /*private void showSystemUI() {
         View decorView = getWindow().getDecorView();
         decorView.setSystemUiVisibility(
                 View.SYSTEM_UI_FLAG_IMMERSIVE
@@ -43,5 +43,5 @@ public class MainActivity extends Activity {
                         // Hide the nav bar and status bar
                         | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
                         | View.SYSTEM_UI_FLAG_FULLSCREEN);
-    }
+    }*/
 }

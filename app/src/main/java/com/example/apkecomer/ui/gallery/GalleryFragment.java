@@ -1,10 +1,12 @@
 package com.example.apkecomer.ui.gallery;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.GridView;
 import android.widget.SearchView;
@@ -17,6 +19,7 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.example.apkecomer.MnDetaGallery;
 import com.example.apkecomer.R;
 import com.example.apkecomer.databinding.FragmentGalleryBinding;
 import com.example.controlador.DProducto;
@@ -38,6 +41,14 @@ public class GalleryFragment extends Fragment {
         schbus = (SearchView)root.findViewById(R.id.FrmProd_SchBus);
         schbus.setOnQueryTextListener(getSearchBuscar(root));
         getList(root,"");
+
+        GridProd.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                startActivity(new Intent(root.getContext(), MnDetaGallery.class));
+            }
+        });
+
         return root;
     }
 

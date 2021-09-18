@@ -44,7 +44,7 @@
             android:background="@drawable/selector_login_text"
             android:ems="10"
             android:inputType="textPersonName"
-            android:text="Name" />
+            android:text="jtiznado@hotmail.com" />
 
         <EditText
             android:id="@+id/FrmLog_txtpas"
@@ -57,21 +57,28 @@
             android:layout_marginRight="20dp"
             android:background="@drawable/selector_login_text"
             android:ems="10"
-            android:inputType="textPassword" />
+            android:inputType="textPassword"
+            android:text="123" />
 
         <Button
             android:id="@+id/FrmLog_btnacep"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_margin="20dp"
             android:layout_marginTop="20dp"
+            android:background="@drawable/selector_login_button"
             android:onClick="OnClick_BtnAcep"
-            android:text="Aceptar" />
+            android:text="Aceptar"
+            app:backgroundTintMode="add" />
 
         <Button
             android:id="@+id/FrmLog_btncan"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Cancelar" />
+            android:layout_margin="20dp"
+            android:background="@drawable/selector_login_button"
+            android:text="Cancelar"
+            app:backgroundTintMode="add" />
     </LinearLayout>
 
 </RelativeLayout>
