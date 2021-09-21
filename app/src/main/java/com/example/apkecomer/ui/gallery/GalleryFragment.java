@@ -45,7 +45,12 @@ public class GalleryFragment extends Fragment {
         GridProd.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                startActivity(new Intent(root.getContext(), MnDetaGallery.class));
+                Intent inte=new Intent(root.getContext(), MnDetaGallery.class);
+                inte.putExtra("cod",""+dpro.getItem(position).getCod());
+                inte.putExtra("nom",""+dpro.getItem(position).getNom());
+                inte.putExtra("pre",""+dpro.getItem(position).getPre());
+                inte.putExtra("ran",""+dpro.getItem(position).getRank());
+                startActivity(inte);
             }
         });
 

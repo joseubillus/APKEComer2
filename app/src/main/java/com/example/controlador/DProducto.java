@@ -93,11 +93,11 @@ public class DProducto implements IDao<Producto> {
 
     @Override
     public Producto getItem(int f) {
-        return null;
+        return array.get(f);
     }
 
     @Override
     public int getsize() {
-        return 0;
+        return array.size();
     }
 }

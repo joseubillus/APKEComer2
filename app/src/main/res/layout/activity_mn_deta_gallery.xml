@@ -30,6 +30,12 @@
                 app:layout_collapseMode="pin"
                 app:popupTheme="@style/Theme.APKEComer.PopupOverlay" />
 
+            <ImageView
+                android:id="@+id/imageView3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@drawable/imagen" />
+
         </com.google.android.material.appbar.CollapsingToolbarLayout>
     </com.google.android.material.appbar.AppBarLayout>
 
