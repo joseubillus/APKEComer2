@@ -67,7 +67,7 @@
                     android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/textView5"
+                    android:id="@+id/FrmContDeGa_Lblcarac"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:text="@string/large_text" />

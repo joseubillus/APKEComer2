@@ -50,6 +50,8 @@ public class GalleryFragment extends Fragment {
                 inte.putExtra("nom",""+dpro.getItem(position).getNom());
                 inte.putExtra("pre",""+dpro.getItem(position).getPre());
                 inte.putExtra("ran",""+dpro.getItem(position).getRank());
+                inte.putExtra("img",""+dpro.getItem(position).getImg());
+                inte.putExtra("desc",""+dpro.getItem(position).getCarac());
                 startActivity(inte);
             }
         });
